@@ -23,15 +23,15 @@ int main() {
         return 1;
     }
 
-    ifstream inputFile("C:\\laba 10\\input.txt");
-    ofstream outputFile("C:\\laba 10\\output.txt");
+    ifstream inputfile("C:\\laba 10\\input.txt");
+    ofstream outputfile("C:\\laba 10\\output.txt");
 
-    if (!inputFile.is_open()) {
+    if (!inputfile.is_open()) {
         cerr << "Не удалось открыть файл для чтения" << endl;
         return 1;
     }
 
-    if (!outputFile.is_open()) {
+    if (!outputfile.is_open()) {
         cerr << "Не удалось открыть файл для записи" << endl;
         return 1;
     }
@@ -39,7 +39,7 @@ int main() {
     int A[50];
 
     for (int i = 0; i < N; i++) {
-        inputFile >> A[i];
+        inputfile >> A[i];
     }
 
     cout << "Ваш массив: ";
@@ -64,11 +64,12 @@ int main() {
     }
 
     cout << "\nКоличество убывающих участков: " << kol;
+    outputfile << "Ваш массив: ";
     for (int i = 0; i < N; i++) {
-        outputFile << A[i] << " ";
+        outputfile << A[i] << " ";
     }
-    outputFile << "\nКоличество убывающих участков: " << kol;
+    outputfile << "\nКоличество убывающих участков: " << kol;
 
-    inputFile.close();
-    outputFile.close();
+    inputfile.close();
+    outputfile.close();
 }
