@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 using namespace std;
 
@@ -15,8 +15,16 @@ int main() {
     length = 0;
     kol = 0;
 
-    ifstream inputFile("C:\\laba 10\\input.txt"); 
-    ofstream outputFile("C:\\laba 10\\output.txt");  
+    cout << "Введите количество элементов в массиве: ";
+    cin >> N;
+
+    if (N > 50) {
+        cerr << "Количество элементов должно быть не более 50!";
+        return 1;
+    }
+
+    ifstream inputFile("C:\\laba 10\\input.txt");
+    ofstream outputFile("C:\\laba 10\\output.txt");
 
     if (!inputFile.is_open()) {
         cerr << "Не удалось открыть файл для чтения" << endl;
@@ -28,17 +36,15 @@ int main() {
         return 1;
     }
 
-    inputFile >> N;
-
-    if (N <= 0 || N > 50) {
-        cerr << "Размер массива должен быть от 1 до 50" << endl;
-        return 1;
-    }
-
     int A[50];
 
     for (int i = 0; i < N; i++) {
         inputFile >> A[i];
+    }
+
+    cout << "Ваш массив: ";
+    for (int i = 0; i < N; i++) {
+        cout << A[i] << " ";
     }
 
     for (int i = 1; i < N; i++) {
@@ -56,7 +62,12 @@ int main() {
     if (length > 0) {
         kol++;
     }
-    outputFile << "Количество убывающих участков: " << kol << endl;
+
+    cout << "\nКоличество убывающих участков: " << kol;
+    for (int i = 0; i < N; i++) {
+        outputFile << A[i] << " ";
+    }
+    outputFile << "\nКоличество убывающих участков: " << kol;
 
     inputFile.close();
     outputFile.close();
